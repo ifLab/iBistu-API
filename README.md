@@ -1,20 +1,13 @@
-# 2016-8-2 iBistu接口文档
+# 2016-8-3 iBistu接口文档
 
 ## 前言
  1. 本接口使用DreamFactory生成，返回的json结构固定为：
- ```
- {
- 	"resource": [
-    	{对象1},
-        {对象2},
-        ...,
-        {对象n
-        }
- 	]
- }
- ```
- 2. 访问本接口需要添加请求头，请求头内容包括：apikey，token，目前由于用户模块未完善，可仅提供apikey进行开发。目前可用的apikey请求头及其格式为：
-`"X-DreamFactory-Api-Key", "3528bd808dde403b83b456e986ce1632d513f7a06c19f5a582058be87be0d8c2"`
+ `{ "resource" :  [ { 对象1 } , { 对象2 } ,  ... , { 对象n } ] }`
+ 2. 访问本接口需要添加请求头，请求头内容包括：apikey，token，目前由于用户模块未完善，可仅提供apikey进行开发。目前可用的apikey请求头及其格式为：`"X-DreamFactory-Api-Key", "3528bd808dde403b83b456e986ce1632d513f7a06c19f5a582058be87be0d8c2"`。也可以不使用请求头，直接以URL参数的形式进行接口访问。例如：`http://45.32.11.169/api/v2/ibistu/_table/module_map?api_key=3528bd808dde403b83b456e986ce1632d513f7a06c19f5a582058be87be0d8c2`
+ 3. 以下接口均可以通过添加可选参数`include_count=true`以获得包含数据对象总数的json数据，格式如下： `http://下面提供的接口?include_count=true&其它参数`，返回值：
+ `{ "resource" :  [ { 对象1 } , { 对象2 } ,  ... , { 对象n } ] , "meta" :  { "count" : 对象数量n } }`
+ 4. 以下接口也可以通过添加可选参数`accept=application/xml`转变成xml结构的数据
+
 
 
 ---
@@ -663,5 +656,28 @@
   
 ## 模块列表
   用于控制已有模块是否显示，需结合用户模块，暂无
+  
+
+## 异常接口
+ 1. 异常接口指由于接口参数错误导致返回的数据异常
+   - 异常返回值结构：
+  ```
+  {
+    "error": {
+      "context": 产生异常的上下文环境,
+      "message": 异常原因,
+      "code": 异常状态码
+    }
+  }
+  ```
+   - 关于异常数据的处理可参考DreamFacotory官方Demo中的处理流程：
+   [iOS-Objective-C](https://github.com/dreamfactorysoftware/ios-sdk)
+   [iOS-Swift](https://github.com/dreamfactorysoftware/ios-swift-sdk)
+   [ReactJS](https://github.com/dreamfactorysoftware/reactjs-sdk)
+   [Android](https://github.com/dreamfactorysoftware/android-sdk)
+   
+  
+  
+
   
   
