@@ -81,18 +81,17 @@
     - 注册验证使用网易云信对手机进行短信验证，详见[官方文档](http://dev.netease.im/docs?doc=server_sms)
  * 登录
 
-    - 接口：`http://api.ifalb.org/api/v2/user/session`
+    - 接口：`http://api.iflab.org/api/v2/user/session?remember_m=true`
     - 请求方法：post
     - 请求体：
     ```
     {
     "email": "testuser@test.com",
-    "password":"testuser",
-    "remember_me":true
+    "password":"testuser"
     }
     ```
 
-      + 此处remember_me字段为true时，返回的session_token将不会过期，除非请求刷新token或者注销登录；若为false，则返回的token只有一个小时的有效期，一小时后将要求重新登录。
+      + 此处返回的session_token默认有效期为24小时，过期后必须刷新token，否则无法使用。
     - 示例返回值：
     ```
     {
