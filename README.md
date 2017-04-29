@@ -242,7 +242,7 @@
             "busName": "小营-清河校区南门-健翔桥",
             "busType": "教学班车",
             "departureTime": "09:50:00",
-            "returnTime": null,
+            "returnTime": "",
             "busLine": "[{"station":"小营校区","arrivalTime":"09: 50"},{"station":"清河小区南门","arrivalTime":"09: 51"},{"station":"健翔桥校区","arrivalTime":"10: 35"}]",
             "busIntro": "小营-清河小区南门-健翔桥"
         },
@@ -251,7 +251,7 @@
             "busName": "健翔桥-小营",
             "busType": "教学班车",
             "departureTime": "09:50:00",
-            "returnTime": null,
+            "returnTime": "",
             "busLine": "[{"station":"健翔桥校区","arrivalTime":"09: 50"},{"station":"小营校区","arrivalTime":"10: 10"}]",
             "busIntro": "健翔桥-小营"
         }
