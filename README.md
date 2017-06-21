@@ -76,6 +76,7 @@
 - 或者使用mob平台进行短信验证，详见[官方文档](http://www.mob.com/#/download#sms)
 
 #### 登录（只需添加apikey）
+登录后请确认用户是否已通过CAS认证.
 
 - 接口：`http://api.iflab.org/api/v2/user/session?remember_m=true`
 - 请求方法：post
@@ -113,6 +114,25 @@
 ```
 {
     "success": true
+}
+```
+
+#### CAS认证（认证成功后记录用户真实姓名）
+认证前first_name, last_name均为email地址中@前面的字段, 认证后请将first_name修改为CAS返回的真实姓名, last_name修改为@(@不会出现在email地址@前面字段, 以此分辨用户是否认证)
+
+- 接口：`https://api.iflab.org/api/v2/user/profile`
+- 请求方法：post
+- 请求体：
+```
+{
+ "first_name": "张三",
+  "last_name": "@"
+}
+```
+- 示例请求成功返回值：(此处返回的session_token默认有效期为24小时，过期后必须刷新token，否则无法使用。)
+```
+{
+  "success": true
 }
 ```
 
